@@ -202,7 +202,7 @@
         _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
     }
     
-    if (self.displayPageControl) {
+    if (self.displayPageControl && self.numberOfPhotos > 1) {
         _pageControl = [[UIPageControl alloc] initWithFrame:self.frameForPageControl];
         _pageControl.numberOfPages = self.numberOfPhotos;
         _pageControl.currentPage = self.currentIndex;
