@@ -67,6 +67,7 @@
     _previousPageIndex = NSUIntegerMax;
     _displayActionButton = YES;
     _displayNavArrows = NO;
+    _displayPageControl = YES;
     _zoomPhotosToFill = YES;
     _performingLayout = NO; // Reset on view did appear
     _rotating = NO;
@@ -84,14 +85,15 @@
 
     _navigationBarStyle = UIBarStyleDefault;
     _navigationBarTintColor = nil;
-    _navigationBarBackgroundImage = nil;
     _toolbarBarStyle = UIBarStyleDefault;
     _toolbarTintColor = nil;
-    _toolbarBackgroundImage = nil;
     _backgroundColor = [UIColor whiteColor];
     _progressColor = [UIColor grayColor];
     _imageCellBackgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
     _imageCellProgressTintColor = [UIColor grayColor];
+    _pageIndicatorTintColor = [UIColor darkGrayColor];
+    _currentPageIndicatorTintColor = [UIColor lightGrayColor];
+    _pageControlBottomOffset = 80.f;
     
     if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]){
         self.automaticallyAdjustsScrollViewInsets = NO;
@@ -198,6 +200,15 @@
     }
     if (self.displayActionButton) {
         _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
+    }
+    
+    if (self.displayPageControl) {
+        _pageControl = [[UIPageControl alloc] initWithFrame:self.frameForPageControl];
+        _pageControl.numberOfPages = self.numberOfPhotos;
+        _pageControl.currentPage = self.currentIndex;
+        _pageControl.pageIndicatorTintColor = _pageIndicatorTintColor;
+        _pageControl.currentPageIndicatorTintColor = _currentPageIndicatorTintColor;
+        [self.view addSubview:_pageControl];
     }
     
     // Update
@@ -1015,6 +1026,11 @@
     return CGRectIntegral(captionFrame);
 }
 
+- (CGRect)frameForPageControl {
+    CGRect bounds = _pagingScrollView.bounds;
+    return CGRectMake(0.f, bounds.size.height - _pageControlBottomOffset, bounds.size.width, 30.f);
+}
+
 - (CGRect)frameForSelectedButton:(UIButton *)selectedButton atIndex:(NSUInteger)index {
     CGRect pageFrame = [self frameForPageAtIndex:index];
     CGFloat yOffset = 0;
@@ -1093,6 +1109,10 @@
 	} else {
 		self.title = nil;
 	}
+    
+    if (_pageControl) {
+        _pageControl.currentPage = _currentPageIndex;
+    }
 	
 	// Buttons
 	_previousButton.enabled = (_currentPageIndex > 0);

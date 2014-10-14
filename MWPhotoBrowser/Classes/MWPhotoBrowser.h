@@ -46,6 +46,7 @@
 @property (nonatomic) BOOL displayNavArrows;
 @property (nonatomic) BOOL displayActionButton;
 @property (nonatomic) BOOL displaySelectionButtons;
+@property (nonatomic) BOOL displayPageControl;
 @property (nonatomic) BOOL alwaysShowControls;
 @property (nonatomic) BOOL enableGrid;
 @property (nonatomic) BOOL enableSwipeToDismiss;
@@ -56,14 +57,15 @@
 // Customize Appearance
 @property (nonatomic, assign) UIBarStyle navigationBarStyle;
 @property (nonatomic, strong) UIColor *navigationBarTintColor;
-@property (nonatomic, strong) UIImage *navigationBarBackgroundImage;
 @property (nonatomic, assign) UIBarStyle toolbarBarStyle;
 @property (nonatomic, strong) UIColor *toolbarTintColor;
-@property (nonatomic, strong) UIImage *toolbarBackgroundImage;
 @property (nonatomic, strong) UIColor *backgroundColor;
 @property (nonatomic, strong) UIColor *progressColor;
 @property (nonatomic, strong) UIColor *imageCellBackgroundColor;
 @property (nonatomic, strong) UIColor *imageCellProgressTintColor;
+@property (nonatomic, strong) UIColor *pageIndicatorTintColor;
+@property (nonatomic, strong) UIColor *currentPageIndicatorTintColor;
+@property (nonatomic, assign) CGFloat pageControlBottomOffset;
 
 // Init
 - (id)initWithPhotos:(NSArray *)photosArray  __attribute__((deprecated("Use initWithDelegate: instead"))); // Depreciated
@@ -78,6 +80,9 @@
 
 // Navigation
 - (void)showNextPhotoAnimated:(BOOL)animated;
+
+- (CGRect)frameForPageControl;
+
 - (void)showPreviousPhotoAnimated:(BOOL)animated;
 
 @end

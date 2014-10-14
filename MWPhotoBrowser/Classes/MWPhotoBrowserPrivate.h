@@ -42,6 +42,9 @@
     UIBarButtonItem *_gridPreviousLeftNavItem;
     UIBarButtonItem *_gridPreviousRightNavItem;
     
+    // Page Control
+    UIPageControl *_pageControl;
+    
     // Appearance
     BOOL _previousNavBarHidden;
     BOOL _previousNavBarTranslucent;
