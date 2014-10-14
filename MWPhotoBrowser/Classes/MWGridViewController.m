@@ -10,6 +10,7 @@
 #import "MWGridCell.h"
 #import "MWPhotoBrowserPrivate.h"
 #import "MWCommon.h"
+#import "DACircularProgressView.h"
 
 @interface MWGridViewController () {
     
@@ -60,7 +61,7 @@
     [super viewDidLoad];
     [self.collectionView registerClass:[MWGridCell class] forCellWithReuseIdentifier:@"GridCell"];
     self.collectionView.alwaysBounceVertical = YES;
-    self.collectionView.backgroundColor = [UIColor blackColor];
+    self.collectionView.backgroundColor = self.browser.backgroundColor;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -159,6 +160,8 @@
     }
     id <MWPhoto> photo = [_browser thumbPhotoAtIndex:indexPath.row];
     cell.photo = photo;
+    cell.backgroundColor = self.browser.imageCellBackgroundColor;
+    cell.loadingIndicator.progressTintColor = self.browser.imageCellProgressTintColor;
     cell.gridController = self;
     cell.selectionMode = _selectionMode;
     cell.isSelected = [_browser photoIsSelectedAtIndex:indexPath.row];
