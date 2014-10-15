@@ -262,7 +262,7 @@
     }
     
     // Image is smaller than screen so no zooming!
-	if (xScale >= 1 && yScale >= 1) {
+	if (xScale >= 1 && yScale >= 1 && !_photoBrowser.zoomSmallPhotos) {
 		minScale = 1.0;
 	}
 	

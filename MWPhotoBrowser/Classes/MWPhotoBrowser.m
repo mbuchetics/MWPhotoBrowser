@@ -69,6 +69,7 @@
     _displayNavArrows = NO;
     _displayPageControl = YES;
     _zoomPhotosToFill = YES;
+    _zoomSmallPhotos = YES;
     _performingLayout = NO; // Reset on view did appear
     _rotating = NO;
     _viewIsActive = NO;

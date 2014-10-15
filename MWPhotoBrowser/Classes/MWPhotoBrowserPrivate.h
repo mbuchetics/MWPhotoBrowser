@@ -102,6 +102,7 @@
 - (CGRect)frameForToolbarAtOrientation:(UIInterfaceOrientation)orientation;
 - (CGRect)frameForCaptionView:(MWCaptionView *)captionView atIndex:(NSUInteger)index;
 - (CGRect)frameForSelectedButton:(UIButton *)selectedButton atIndex:(NSUInteger)index;
+- (CGRect)frameForPageControl;
 
 // Navigation
 - (void)updateNavigation;
