@@ -186,6 +186,11 @@
     }
 }
 
+- (UIImageView *)imageView
+{
+    return _photoImageView;
+}
+
 #pragma mark - Loading Progress
 
 - (void)setProgressFromNotification:(NSNotification *)notification {

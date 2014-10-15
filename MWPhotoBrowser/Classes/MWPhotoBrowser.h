@@ -83,4 +83,7 @@
 - (void)showNextPhotoAnimated:(BOOL)animated;
 - (void)showPreviousPhotoAnimated:(BOOL)animated;
 
+// Image
+- (UIImageView *)currentImageView;
+
 @end

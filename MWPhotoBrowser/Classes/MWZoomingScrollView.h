@@ -28,4 +28,6 @@
 - (void)setMaxMinZoomScalesForCurrentBounds;
 - (void)prepareForReuse;
 
+- (UIImageView *)imageView;
+
 @end

@@ -1151,6 +1151,14 @@
     [self jumpToPageAtIndex:_currentPageIndex+1 animated:animated];
 }
 
+#pragma mark - Images
+
+- (UIImageView *)currentImageView
+{
+    MWZoomingScrollView *page = [self pageDisplayedAtIndex:self.currentIndex];
+    return page.imageView;
+}
+
 #pragma mark - Interactions
 
 - (void)selectedButtonTapped:(id)sender {
